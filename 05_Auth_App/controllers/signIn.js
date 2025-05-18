@@ -47,7 +47,7 @@ exports.SignIn = async (req, res) => {
             let token = jwt.sign(payload, 
                                 process.env.JWT_KEY,
                                 {
-                                   expiresIn:"2h", 
+                                   expiresIn:"24h", 
                                 }); // sign(payload,key,options);
 
             // add token to user object
@@ -68,6 +68,14 @@ exports.SignIn = async (req, res) => {
                 message: "User Logged In Successfully"
             });
 
+            // normal response without creating cookie
+            // return res.status(200).json({
+            //     success: true,
+            //     token,
+            //     user,
+            //     message: "User Logged In Successfully"
+            // });
+
         }
 
         // if not then
@@ -78,17 +86,10 @@ exports.SignIn = async (req, res) => {
             });
         }
 
-        // success
-        res.status(200).json({
-            success:true,
-            user,
-            message:"User signed in successfully.",
-        });
-
     } 
     catch (error) {
         console.error(error);
-        res.status(500).json({
+        return res.status(500).json({
             success: false,
             message: "Internal server error.",
             error: error.message,

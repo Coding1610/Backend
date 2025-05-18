@@ -2,14 +2,18 @@
 const express = require('express');
 const app = express();
 
+// import cookie parser
+const cookieParser = require('cookie-parser');
+
 // load .env config
 require('dotenv').config();
 
 // import PORT number from .env file
 const PORT = process.env.PORT || 4000;
 
-// middleware for body parser
+// middleware for body parser & cookie parser
 app.use(express.json());
+app.use(cookieParser());
 
 // import routes
 const routes = require('./routes/auth');

@@ -7,11 +7,17 @@ require('dotenv').config();
 module.exports = function(req,res,next) { // next is use for calling next middleware if you include multiple middleware in routes
     
     try{
-        // get token from body or cookies or header
-        const token = req.body.token;
+        
+        // fetch token
+        const token = req.header("Authorization")?.replace("Bearer ","").trim() || req.body?.token || req.cookies?.token;
 
+        // 3 way to play with token : Body, Cookie and Header
+        // console.log("Body Token : ", req.body?.token);
+        // console.log("Cookies Token : ", req.cookies?.token);
+        // console.log("Header Token : ", req.header("Authorization")?.replace("Bearer ", "").trim());
+        
         // if no token
-        if(!token){
+        if(!token || token === undefined ){
             return res.status(401).json(
                 {
                     successs:false,
@@ -23,11 +29,11 @@ module.exports = function(req,res,next) { // next is use for calling next middle
         // verify token 
         try{    
             const payload = jwt.verify(token,process.env.JWT_KEY); // jwt.verify(toeken,jwtKey)
-            console.log(payload);
+            // console.log(payload);
             req.user = payload
         }
         catch(error){
-            res.status(401).json(
+            return res.status(401).json(
                 {
                     success:false,
                     message:error.message
@@ -38,7 +44,7 @@ module.exports = function(req,res,next) { // next is use for calling next middle
 
     }
     catch(error){
-        return res.stauts(500).json(
+        return res.status(500).json(
             {
                 success:false,
                 message:error.message
