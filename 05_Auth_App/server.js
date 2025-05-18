@@ -15,7 +15,7 @@ app.use(express.json());
 const routes = require('./routes/auth');
 
 // mount routes
-app.use("/api/v1/auth",routes);
+app.use("/api/v1",routes);
 
 // import database connection function
 const dbConnect = require('./config/database');
