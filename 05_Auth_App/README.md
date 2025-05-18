@@ -45,13 +45,47 @@ This document summarizes what I learned in the sixth backend development lecture
   - If not → returned error response
 - If found:
   - Compared actual password with stored hashed password using `bcrypt.compare()`
-  - If matched → returned success response
-  - If not matched → returned error response
+  - If matched → generated JWT token
+  - Token added in:
+    - **Body** (optional)
+    - **Cookies** using `res.cookie()`
+    - **Headers** using `Authorization: Bearer <token>`
+  - Returned success response with token
+
+---
+
+## 🔁 Authentication & Authorization Middleware
+
+### 🧱 Authentication Middleware
+- Checks token from one of three places:
+  - `req.body.token`
+  - `req.cookies.token`
+  - `req.header("Authorization")?.replace("Bearer ", "").trim()`
+- If valid → adds decoded payload to `req.user`
+- If missing or invalid → returns error response
+- Used `next()` to forward request to the next middleware/controller
+
+### 🧱 Authorization Middleware
+- **isStudent**: Checks if `req.user.role === 'Student'`
+- **isAdmin**: Checks if `req.user.role === 'Admin'`
+- If role mismatch → returns 401 Unauthorized
+
+---
+
+## 🧪 Postman Testing
+- Tested SignUp and SignIn routes with body and headers
+- Used Postman to test:
+  - Cookie expiration and visibility with `httpOnly`
+  - Sending token in `Authorization` header
+  - Middleware flow using `next()`
 
 ---
 
 ## 🧠 Summary
 
-I learned how to implement backend authentication using Node.js, Express, MongoDB, and Bcrypt. This includes creating secure SignUp and SignIn routes, enforcing role-based user creation with enum validation, hashing passwords, and comparing passwords for login verification.
-
----
+I learned how to:
+- Implement secure SignUp and SignIn routes with role-based access
+- Use JWT for authentication and pass token through body, cookies, and headers
+- Create custom middleware for Authentication and Authorization
+- Use `next()` in middleware to chain logic
+- Debug and test everything using Postman
