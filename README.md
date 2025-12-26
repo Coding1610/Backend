@@ -14,7 +14,9 @@ This README gives an in-depth explanation of key backend topics using Node.js, E
 
 ### 2. Express.js
 
-Express is a lightweight web framework for Node.js. It provides a simple way to define routes, handle requests, serve static files, and integrate middleware. It abstracts a lot of lower-level Node.js code, making it easier to build web servers and APIs. With Express, building a RESTful API becomes much simpler and faster.
+* Express.js is a minimal and flexible web application framework for Node.js. It sits on top of Node.js and provides a set of features for building web and mobile applications.
+* Key Feature: It simplifies Routing (handling different URLs) and Middleware (functions that run during the request-response cycle, like authentication or logging).
+* The "Why": Writing a server in pure Node.js is complex and requires a lot of code. Express provides the "shorthand" to build APIs and servers quickly and cleanly.
 
 ### 3. MongoDB Compass
 
