@@ -8,9 +8,9 @@ This README gives an in-depth explanation of key backend topics using Node.js, E
 
 ### 1. Node.js(The Environment)
 
-Node.js is not a language or a framework; it is a runtime environment that allows you to run JavaScript on the server (outside the browser). It is built on Google’s V8 engine.
-Key Feature: It uses an Asynchronous, Event-Driven model. This means it can handle thousands of concurrent connections simultaneously without waiting for one task to finish before starting the next.
-The "Why": It allows developers to use JavaScript for both frontend and backend (Full-stack), making development faster and more consistent.
+* Node.js is not a language or a framework; it is a runtime environment that allows you to run JavaScript on the server (outside the browser). It is built on Google’s V8 engine.
+* Key Feature: It uses an Asynchronous, Event-Driven model. This means it can handle thousands of concurrent connections simultaneously without waiting for one task to finish before starting the next.
+* The "Why": It allows developers to use JavaScript for both frontend and backend (Full-stack), making development faster and more consistent.
 
 ### 2. Express.js
 
