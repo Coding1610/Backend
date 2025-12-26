@@ -140,47 +140,16 @@ This involves accepting files from users (like images or documents) via a form o
 
 ### 31. HTTP Methods - GET, POST, PUT, PATCH, DELETE
 
-* **GET** The GET HTTP request is used to retrieve data from the server. When a client sends a GET request to an endpoint, the server processes it and responds with the requested data—usually in JSON format for APIs.
+* **GET:** The GET HTTP request is used to retrieve data from the server. When a client sends a GET request to an endpoint, the server processes it and responds with the requested data—usually in JSON format for APIs.
 
-* **POST**
-* What: 
-```
-Sends data to the server to create a new resource.
-```
-* Why: 
-```
-Used in routes like /register or /createPost to add new entries in the database. It sends data in the request body and is not idempotent (repeating the request creates multiple entries).
-```
+* **POST:** Sends data to the server to create a new resource. Used in routes like /register or /createPost to add new entries in the database. It sends data in the request body and is not idempotent (repeating the request creates multiple entries).
 
-* **PUT**
-### What:
-```
-Updates an existing resource by replacing it completely.
-```
-### Why: 
-```
-Used in routes like /updateUser/:id where the full object (all fields) is provided to update the database record. It is idempotent (repeating the request gives the same result).
-```
+* **PUT:** Updates an existing resource by replacing it completely. Used in routes like /updateUser/:id where the full object (all fields) is provided to update the database record. It is idempotent (repeating the request gives the same result).
 
-* **PATCH**
-### What: 
-```
-Partially updates an existing resource.
-```
-### Why: 
-```
-Useful when only specific fields need to be updated (e.g., updating just the email or password). More efficient than PUT when only partial changes are needed.
-```
+* **PATCH:** Partially updates an existing resource. Useful when only specific fields need to be updated (e.g., updating just the email or password). More efficient than PUT when only partial changes are needed.
 
-* **DELETE**
-### What: 
-```
-Removes a resource from the server.
-```
-### Why: 
-```
-Used in routes like /deleteUser/:id or /deletePost/:id to remove data from the database. It helps manage resources and clean up unused data.
-```
+* **DELETE:** Removes a resource from the server. Used in routes like /deleteUser/:id or /deletePost/:id to remove data from the database. It helps manage resources and clean up unused data.
+  
 ---
 
 This document provides a understanding of essential backend theory.
