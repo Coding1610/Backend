@@ -143,11 +143,11 @@ This involves accepting files from users (like images or documents) via a form o
 * **GET** The GET HTTP request is used to retrieve data from the server. When a client sends a GET request to an endpoint, the server processes it and responds with the requested data—usually in JSON format for APIs.
 
 * **POST**
-### What: 
+* What: 
 ```
 Sends data to the server to create a new resource.
 ```
-### Why: 
+* Why: 
 ```
 Used in routes like /register or /createPost to add new entries in the database. It sends data in the request body and is not idempotent (repeating the request creates multiple entries).
 ```
